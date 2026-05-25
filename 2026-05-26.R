@@ -43,7 +43,8 @@ colour_values = c("Geothermal Energy" = "red",
                   "Marine Energy" = "blue",
                   "Solar Energy" = "#EDC001")
 
-renewable_types_long %>% ggplot(aes(x = year, y = value, colour = name)) +
+renewable_types_plot <- renewable_types_long %>% 
+  ggplot(aes(x = year, y = value, colour = name)) +
   geom_line(position=position_dodge(width=0.2)) +
   scale_color_manual(values = colour_values) + 
   labs(
@@ -55,3 +56,4 @@ renewable_types_long %>% ggplot(aes(x = year, y = value, colour = name)) +
   ) +
   theme(legend.position = "bottom")
 
+renewable_types_plot
