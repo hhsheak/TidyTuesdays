@@ -7,7 +7,7 @@ tuesdata <- tidytuesdayR::tt_load('2026-05-26')
 energy_cleaned <- tuesdata$energy_cleaned %>%
   as_tibble()
 
-#Singapore energy data
+#Singapore energy data (trial)
 sg_energy <- energy_cleaned %>%
   filter(country_name == "Singapore") %>%
   mutate(renewables_pct = share_of_renewable_capacity_in_total_capacity_pct)
