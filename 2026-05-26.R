@@ -29,6 +29,7 @@ renewable_types <- energy_cleaned %>%
   select(yr, geothermal_energy_consumption_tfec_pct:modern_biomass_energy_consumption_tfec_pct, solar_energy_consumption_tfec_pct) %>%
   select(year = yr, contains("tfec_pct"))
 
+#Converting to long data to make graphing easier
 renewable_types_long <- renewable_types %>%
   pivot_longer(cols = ends_with("tfec_pct")) %>%
   mutate(name = gsub("_consumption_tfec_pct", "", name)) %>%
