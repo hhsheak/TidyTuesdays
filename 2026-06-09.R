@@ -48,4 +48,4 @@ rated_films_plot <- rated_films_plotting %>%
   theme(legend.position = "bottom") +
   labs(title = "Metacritic and RottenTomatoes scores", x = "RottenTomatoes", y = "Metacritic", color = "Publisher")
 
-rated_films_plot
+# rated_films_plot
