@@ -1,6 +1,6 @@
 if(!require("pacman")) install.packages("pacman")
 
-pacman::p_load(pacman, tidyverse, magrittr, tidytuesdayR)
+pacman::p_load(pacman, tidyverse, magrittr, RColorBrewer, tidytuesdayR)
 
 tuesdata <- tidytuesdayR::tt_load('2026-06-30')
 
@@ -24,21 +24,30 @@ undiscovered_wrecks_plot <- undiscovered_wrecks %>%
 
 undiscovered_wrecks_plot
 
-#Map
+#Mapping shipwreck locations
 install.packages("ggOceanMaps")
 pacman::p_load(sf, ggOceanMaps)
 
 discovered_wrecks_location_sf <- wreck_inventory %>%
   drop_na() %>%
+  mutate(Era = case_when(
+    year < 1800 ~ "1500s to 1700s",
+    year >= 1800 & year < 1900 ~ "1800s",
+    year >= 1900 & year < 2000 ~ "1900s",
+    year >= 2000 ~ "2000s"
+  )) %>%
   st_as_sf(coords = c("longitude", "latitude"), crs = 4326)
 
 ireland_map <- basemap(
   limits = c(-23, -3, 46, 58),
   bathymetry = TRUE,
-)
+ )
 
 wrecks_map <- ireland_map +
-  geom_sf(data = discovered_wrecks_location_sf, alpha = 0.5) +
-  labs(title = "Location of Shipwrecks around Ireland")
+  geom_sf(data = discovered_wrecks_location_sf, aes(colour = Era), alpha = 0.5) +
+  scale_colour_brewer(palette = "PuOr") +
+  guides(fill = guide_legend(position = "left"), colour = guide_legend(position = "right", override.aes = list(shape = 16, linewidth = 0, fill = NA))) +
+  theme(legend.key = element_rect(fill = NA, colour = NA)) +
+  labs(title = "Shipwrecks around Ireland")
 
 wrecks_map
