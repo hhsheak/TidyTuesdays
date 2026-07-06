@@ -83,7 +83,7 @@ age_winning_plot <- attributes_winning %>%
 
 height_winning_plot / reach_winning_plot / age_winning_plot + plot_layout(axes = "collect") + plot_annotation(title = "Relationship between Physical Attributes and Winning")
 
-#Change in Fight Finishes
+#Change in fight finishes
 fight_finishes <- ufc_fights %>%
   select(date, method) %>%
   mutate(
