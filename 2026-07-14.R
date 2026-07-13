@@ -19,7 +19,7 @@ penguin_correlations <- penguin_data %>%
       ggpairs(title = unique(df$genus)) #Uses ggpairs to generate correlation plots between each variable
   })
 
-penguin_correlations[[1]]
+penguin_correlations
 
 #3D visualisation of the relationship between culmen length, beak width and beak depth
 pacman::p_load(rgl)
