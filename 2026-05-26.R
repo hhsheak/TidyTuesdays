@@ -2,7 +2,7 @@ if(!require("pacman")) install.packages("pacman")
 
 pacman::p_load(pacman, tidyverse, magrittr, tidytuesdayR)
 
-tuesdata <- tidytuesdayR::tt_load('2026-05-26')
+tuesdata <- tidytuesdayR::tt_load('2026-05-26') 
 
 energy_cleaned <- tuesdata$energy_cleaned %>%
   as_tibble()
