@@ -43,7 +43,7 @@ velocity_activity_plot <- velocity_activity %>%
   labs(x = "Activity Type",
        y = "Velocity Dispersion (km/s)",
        title = "Velocity Dispersion and Nuclear Activity")
-# 
+
 velocity_activity_plot  
 
 #BPT Diagnostic Diagram
