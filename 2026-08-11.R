@@ -2,8 +2,6 @@ if(!require("pacman")) install.packages("pacman")
 
 pacman::p_load(pacman, tidyverse, magrittr, tidytuesdayR)
 
-tuesdata <- tidytuesdayR::tt_load('2026-08-11')
-
 palomar_emission_lines <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-08-11/palomar_emission_lines.csv') %>%
   as_tibble()
 palomar_survey <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-08-11/palomar_survey.csv') %>%
